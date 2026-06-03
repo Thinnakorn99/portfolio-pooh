@@ -95,7 +95,7 @@
   background: rgba(255, 255, 255, 0.045);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
   color: rgba(255, 255, 255, 0.72);
-  font-size: 0.76rem;
+  font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -192,7 +192,7 @@
 
 .hero__metrics span {
   margin-top: 3px;
-  font-size: 0.66rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -320,6 +320,10 @@
   .hero__metrics {
     grid-template-columns: 1fr;
     max-width: 340px;
+  }
+
+  .hero__btn {
+    min-width: min(100%, 260px);
   }
 
   .hero__metrics div + div {

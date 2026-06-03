@@ -3,7 +3,7 @@ import avatar from '../assets/avatar.png'
 
 export default function Hero() {
   return (
-    <section className="hero" id="about">
+    <section className="hero" id="hero">
       <div className="hero__stage" aria-hidden="true">
         <span className="hero__beam hero__beam--one" />
         <span className="hero__beam hero__beam--two" />
@@ -14,7 +14,15 @@ export default function Hero() {
       <p className="hero__eyebrow">Web Designer &amp; Developer Intern</p>
 
       <div className="hero__avatar-wrap">
-        <img src={avatar} alt="Thinnakorn Jintakawes" className="hero__avatar" />
+        <img
+          src={avatar}
+          alt="Thinnakorn Jintakawes - Web Designer & Developer Intern Portfolio"
+          className="hero__avatar"
+          width="624"
+          height="722"
+          fetchPriority="high"
+          decoding="async"
+        />
       </div>
 
       <h1 className="hero__title">
@@ -48,8 +56,8 @@ export default function Hero() {
         <a href="#contact" className="hero__btn hero__btn--filled">
           Get In Touch
         </a>
-        <a href="/resume.pdf" className="hero__btn hero__btn--outline" target="_blank" rel="noopener noreferrer">
-          Download CV
+        <a href="#experience" className="hero__btn hero__btn--outline">
+          View Projects
         </a>
       </div>
     </section>
