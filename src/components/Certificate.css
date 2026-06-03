@@ -92,7 +92,7 @@
 }
 
 .cert-card__label {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: rgba(255, 255, 255, 0.5);
   letter-spacing: 0.08em;
@@ -109,7 +109,7 @@
 }
 
 .cert-card__subtitle {
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.5);
   margin-bottom: 2px;
@@ -128,12 +128,12 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 36px;
-  padding: 0 14px;
+  min-height: 48px;
+  padding: 0 20px;
   border: 1px solid rgba(77, 171, 247, 0.28);
   border-radius: 999px;
   background: rgba(77, 171, 247, 0.08);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 0.04em;
   color: #8cc8ff;
