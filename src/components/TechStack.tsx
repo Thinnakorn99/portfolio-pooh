@@ -1,9 +1,5 @@
 import './TechStack.css'
 
-/* Exact icons from Figma node 13:418 "Logos":
-   devicon:vscode-wordmark, devicon:python-wordmark, logos:html-5,
-   devicon:css3-wordmark, devicon:react-wordmark, devicon:gitlab-wordmark,
-   devicon:mongodb-wordmark, skill-icons:discord */
 const techs = [
   {
     name: 'VS Code',
