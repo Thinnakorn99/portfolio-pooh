@@ -1,4 +1,4 @@
-import './Footer.css'
+﻿import './Footer.css'
 
 export default function Footer() {
   return (
@@ -7,12 +7,12 @@ export default function Footer() {
 
       <p className="footer__bio">
         I'm Thinnakorn Jintakawes, a Computer Science student at Kasetsart University and a
-        Web Designer & Developer Intern. My goal is to combine creative design thinking with
+        Web Designer &amp; Developer Intern. My goal is to combine creative design thinking with
         clean, structured code to build modern and impactful web applications.
       </p>
 
       <a href="mailto:thinnakorn.j04@gmail.com" className="footer__email">
-        ✉ thinnakorn.j04@gmail.com
+        thinnakorn.j04@gmail.com
       </a>
 
       <div className="footer__socials">
