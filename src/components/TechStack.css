@@ -1,0 +1,49 @@
+.techstack {
+  padding: 56px 24px;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.techstack__title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  background: linear-gradient(90deg, #ff1464, #ff6935);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 36px;
+}
+
+.techstack__icons {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.techstack__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.techstack__item img {
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  transition: transform 0.2s;
+}
+
+.techstack__item img:hover {
+  transform: scale(1.12);
+}
+
+.techstack__item span {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: rgba(255,255,255,0.5);
+  white-space: nowrap;
+}

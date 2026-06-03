@@ -1,0 +1,45 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  /* From Figma: semi-transparent dark background with blur */
+  background: rgba(22, 22, 22, 0.70);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 40px;
+  padding: 20px 40px;
+}
+
+.header__nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.85);
+  letter-spacing: 0.2px;
+  transition: color 0.2s;
+}
+
+.header__nav a:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 600px) {
+  .header__nav {
+    justify-content: center;
+    gap: 20px;
+    padding: 16px 20px;
+    flex-wrap: wrap;
+  }
+
+  .header__nav a {
+    font-size: 12px;
+  }
+}

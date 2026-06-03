@@ -1,0 +1,104 @@
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 80px 24px 64px;
+  /* start below fixed header */
+  padding-top: 60px;
+}
+
+/* ── Avatar ── */
+.hero__avatar-wrap {
+  margin-bottom: 0px;
+}
+
+.hero__avatar {
+  /* From Figma: avatar component 251×223px, no circular crop, just the PNG */
+  width: 251px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ── Title ── */
+/* Figma: Poppins ExtraBold (800) 55px, line-height 63.36px, text-align center */
+.hero__title {
+  font-size: clamp(2rem, 8vw, 55px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: #ffffff;
+  margin-bottom: 20px;
+  max-width: 700px;
+}
+
+/* "reality!" — gradient orange→purple from Figma styleOverrideTable 1655 */
+.hero__title--grad {
+  background: linear-gradient(90deg, #ff8560 0%, #9933ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Bio text ── */
+/* Figma: Poppins Light (300) 18px, color #c5c5c5, line-height 27px */
+.hero__bio {
+  font-size: clamp(0.85rem, 2.5vw, 18px);
+  font-weight: 300;
+  line-height: 1.6;
+  color: #c5c5c5;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+/* ── Buttons ── */
+.hero__btns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* Base button — Figma shows pill shape (cornerRadius: 50), height 64px */
+.hero__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding: 0 36px;
+  border-radius: 50px;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  transition: opacity 0.2s, transform 0.2s;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* "Get In Touch" — from Figma: fill = page bg (#161510), stroke = white 
+   In the screenshot it appears as white pill with dark text */
+.hero__btn--filled {
+  background: #ffffff;
+  color: #0a0a0a;
+  border: 2px solid transparent;
+}
+
+.hero__btn--filled:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* "Download CV" — from Figma: no fill, stroke white, white text */
+.hero__btn--outline {
+  background: transparent;
+  color: #ffffff;
+  border: 2px solid #ffffff;
+}
+
+.hero__btn--outline:hover {
+  background: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+}
