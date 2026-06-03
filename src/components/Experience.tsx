@@ -1,8 +1,8 @@
-import './Experience.css'
+﻿import './Experience.css'
 
 const experiences = [
   {
-    icon: '🎬',
+    icon: 'UX',
     title: 'Movie Ticket Reservation System Analysis and Design',
     year: '2025',
     bullets: [
@@ -11,7 +11,7 @@ const experiences = [
     ],
   },
   {
-    icon: '🍌',
+    icon: 'AI',
     title: 'Automated Banana Quality Assessment via images',
     year: '2025',
     bullets: [
@@ -20,7 +20,7 @@ const experiences = [
     ],
   },
   {
-    icon: '🦁',
+    icon: 'EC',
     title: 'Hong-Shop Online Pet Food Shop Platform',
     year: '2025',
     bullets: [
@@ -33,10 +33,8 @@ const experiences = [
 export default function Experience() {
   return (
     <section className="experience" id="experience">
-      {/* Title — blue gradient, all-caps, bold */}
       <h2 className="experience__title">EXPERIENCE</h2>
 
-      {/* List of experience cards */}
       <div className="experience__list">
         {experiences.map((exp, i) => (
           <div className="exp-card" key={i}>
