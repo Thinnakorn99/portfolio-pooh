@@ -1,0 +1,40 @@
+<svg width="960" height="560" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="560" rx="34" fill="#0D1117"/>
+  <rect width="960" height="560" rx="34" fill="url(#bg)"/>
+  <path d="M130 112H830" stroke="white" stroke-opacity=".08" stroke-width="2"/>
+  <path d="M130 448H830" stroke="white" stroke-opacity=".08" stroke-width="2"/>
+  <g filter="url(#shadow)">
+    <rect x="150" y="128" width="660" height="304" rx="26" fill="#111827" stroke="white" stroke-opacity=".12"/>
+    <circle cx="256" cy="280" r="44" fill="#F97316"/>
+    <circle cx="480" cy="196" r="44" fill="#22C55E"/>
+    <circle cx="704" cy="280" r="44" fill="#60A5FA"/>
+    <circle cx="480" cy="364" r="44" fill="#A78BFA"/>
+    <path d="M300 268C356 214 410 198 436 196" stroke="#F8FAFC" stroke-opacity=".72" stroke-width="12" stroke-linecap="round"/>
+    <path d="M524 196C570 199 630 222 666 266" stroke="#F8FAFC" stroke-opacity=".72" stroke-width="12" stroke-linecap="round"/>
+    <path d="M666 294C621 341 553 362 524 364" stroke="#F8FAFC" stroke-opacity=".72" stroke-width="12" stroke-linecap="round"/>
+    <path d="M436 364C382 360 321 327 298 294" stroke="#F8FAFC" stroke-opacity=".72" stroke-width="12" stroke-linecap="round"/>
+    <text x="214" y="288" fill="#111827" font-family="Poppins, Arial, sans-serif" font-size="26" font-weight="900">main</text>
+    <text x="432" y="204" fill="#111827" font-family="Poppins, Arial, sans-serif" font-size="24" font-weight="900">feat</text>
+    <text x="660" y="288" fill="#111827" font-family="Poppins, Arial, sans-serif" font-size="24" font-weight="900">PR</text>
+    <text x="430" y="372" fill="#111827" font-family="Poppins, Arial, sans-serif" font-size="22" font-weight="900">merge</text>
+  </g>
+  <text x="86" y="82" fill="#FFFFFF" fill-opacity=".82" font-family="Poppins, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="3">GIT WORKFLOW</text>
+  <text x="86" y="506" fill="#FFFFFF" font-family="Poppins, Arial, sans-serif" font-size="42" font-weight="900">Branch, commit, pull request, and merge</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#21130D"/>
+      <stop offset=".52" stop-color="#101826"/>
+      <stop offset="1" stop-color="#111B2F"/>
+    </linearGradient>
+    <filter id="shadow" x="116" y="104" width="728" height="384" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="22"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .36 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+</svg>

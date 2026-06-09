@@ -17,14 +17,26 @@
 }
 
 .techstack__title {
+  position: relative;
   font-size: 1.45rem;
   font-weight: 800;
   letter-spacing: 0.15em;
-  background: linear-gradient(90deg, #ff1464, #ff6935, #ffa726);
+  background: linear-gradient(90deg, #27d9ff 0%, #7cf7d4 52%, #d7ff72 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 36px;
+}
+
+.techstack__title::after {
+  content: '';
+  display: block;
+  width: 72px;
+  height: 2px;
+  margin: 12px auto 0;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #27d9ff, #d7ff72);
+  box-shadow: 0 0 22px rgba(39, 217, 255, 0.35);
 }
 
 .techstack__icons {

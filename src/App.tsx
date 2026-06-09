@@ -1,9 +1,15 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import TechStack from './components/TechStack'
 import Experience from './components/Experience'
 import Certificate from './components/Certificate'
+import Blog from './components/Blog'
+import BlogCatalog from './components/BlogCatalog'
+import BlogPreview from './components/BlogPreview'
+import DevToolsDebugBlog from './components/DevToolsDebugBlog'
+import GitWorkflowBlog from './components/GitWorkflowBlog'
+import SaitamaWorkoutBlog from './components/SaitamaWorkoutBlog'
 import Footer from './components/Footer'
 
 const DISCORD_WEBHOOK_URL =
@@ -150,6 +156,8 @@ function notifySiteOpen() {
 }
 
 function App() {
+  const [path, setPath] = useState(window.location.pathname)
+
   useEffect(() => {
     if (sessionStorage.getItem(WEBHOOK_SESSION_KEY)) {
       return
@@ -159,6 +167,40 @@ function App() {
     notifySiteOpen()
   }, [])
 
+  useEffect(() => {
+    const syncPath = () => setPath(window.location.pathname)
+
+    window.addEventListener('popstate', syncPath)
+    window.addEventListener('pageshow', syncPath)
+
+    return () => {
+      window.removeEventListener('popstate', syncPath)
+      window.removeEventListener('pageshow', syncPath)
+    }
+  }, [])
+
+  const normalizedPath = path.replace(/\/$/, '')
+
+  if (normalizedPath === '/blog/cloudflare-pages-deploy') {
+    return <Blog />
+  }
+
+  if (normalizedPath === '/blog/saitama-workout') {
+    return <SaitamaWorkoutBlog />
+  }
+
+  if (normalizedPath === '/blog/git-github-workflow') {
+    return <GitWorkflowBlog />
+  }
+
+  if (normalizedPath === '/blog/chrome-devtools-debugging') {
+    return <DevToolsDebugBlog />
+  }
+
+  if (normalizedPath === '/blog') {
+    return <BlogCatalog />
+  }
+
   return (
     <>
       <Header />
@@ -166,6 +208,7 @@ function App() {
       <TechStack />
       <Experience />
       <Certificate />
+      <BlogPreview />
       <Footer />
     </>
   )
