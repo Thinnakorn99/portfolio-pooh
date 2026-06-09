@@ -5,16 +5,29 @@
 }
 
 .certificate__title {
+  position: relative;
   font-size: clamp(1.2rem, 4vw, 1.5rem);
   font-weight: 800;
   letter-spacing: 0.12em;
   text-align: center;
   color: transparent;
-  background: linear-gradient(90deg, #ff6935 0%, #ffa726 60%, #9933ff 100%);
+  background: linear-gradient(90deg, #ffb000 0%, #ff7a1a 58%, #ffdd7a 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 32px;
+}
+
+.certificate__title::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -12px;
+  width: 92px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffb000, #ff7a1a);
+  transform: translateX(-50%);
 }
 
 .certificate__grid {

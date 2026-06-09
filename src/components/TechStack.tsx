@@ -1,4 +1,5 @@
 import './TechStack.css'
+import discordLogo from '../assets/discord-logo.svg'
 
 const techs = [
   {
@@ -31,7 +32,7 @@ const techs = [
   },
   {
     name: 'Discord',
-    icon: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/discord/discord-original.svg',
+    icon: discordLogo,
   },
 ]
 
@@ -42,7 +43,7 @@ export default function TechStack() {
       <div className="techstack__icons">
         {techs.map((t) => (
           <div className="techstack__item" key={t.name}>
-            <img src={t.icon} alt={t.name} title={t.name} loading="lazy" />
+            <img src={t.icon} alt={`${t.name} logo`} title={t.name} loading="lazy" />
             <span>{t.name}</span>
           </div>
         ))}

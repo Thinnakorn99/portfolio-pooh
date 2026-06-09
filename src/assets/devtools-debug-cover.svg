@@ -1,0 +1,41 @@
+<svg width="960" height="560" viewBox="0 0 960 560" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="960" height="560" rx="34" fill="#0B1020"/>
+  <rect width="960" height="560" rx="34" fill="url(#bg)"/>
+  <g filter="url(#shadow)">
+    <rect x="104" y="108" width="752" height="344" rx="26" fill="#111827" stroke="white" stroke-opacity=".12"/>
+    <rect x="132" y="146" width="320" height="268" rx="18" fill="#F8FAFC"/>
+    <rect x="160" y="176" width="168" height="18" rx="9" fill="#CBD5E1"/>
+    <rect x="160" y="222" width="244" height="28" rx="10" fill="#60A5FA"/>
+    <rect x="160" y="272" width="210" height="22" rx="9" fill="#CBD5E1"/>
+    <rect x="160" y="314" width="264" height="22" rx="9" fill="#CBD5E1"/>
+    <rect x="160" y="356" width="120" height="26" rx="13" fill="#22C55E"/>
+    <rect x="488" y="146" width="340" height="268" rx="18" fill="#080C14" stroke="white" stroke-opacity=".08"/>
+    <circle cx="520" cy="178" r="7" fill="#FF5F57"/>
+    <circle cx="546" cy="178" r="7" fill="#FFBD2E"/>
+    <circle cx="572" cy="178" r="7" fill="#28C840"/>
+    <text x="520" y="234" fill="#93E6B6" font-family="Consolas, monospace" font-size="24" font-weight="700">console.log(state)</text>
+    <text x="520" y="282" fill="#FCA5A5" font-family="Consolas, monospace" font-size="24" font-weight="700">404 asset missing</text>
+    <text x="520" y="330" fill="#8CC8FF" font-family="Consolas, monospace" font-size="24" font-weight="700">Network: 200 OK</text>
+    <path d="M420 122L474 68L528 122" stroke="#FBBF24" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M474 72V174" stroke="#FBBF24" stroke-width="16" stroke-linecap="round"/>
+  </g>
+  <text x="86" y="82" fill="#FFFFFF" fill-opacity=".82" font-family="Poppins, Arial, sans-serif" font-size="28" font-weight="800" letter-spacing="3">DEVTOOLS DEBUGGING</text>
+  <text x="86" y="506" fill="#FFFFFF" font-family="Poppins, Arial, sans-serif" font-size="42" font-weight="900">Inspect, console, network, and fix frontend bugs</text>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="960" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111827"/>
+      <stop offset=".48" stop-color="#0F172A"/>
+      <stop offset="1" stop-color="#1E1B4B"/>
+    </linearGradient>
+    <filter id="shadow" x="72" y="44" width="816" height="452" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+      <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+      <feOffset dy="18"/>
+      <feGaussianBlur stdDeviation="22"/>
+      <feComposite in2="hardAlpha" operator="out"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .36 0"/>
+      <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow"/>
+      <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow" result="shape"/>
+    </filter>
+  </defs>
+</svg>

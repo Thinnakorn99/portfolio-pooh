@@ -5,16 +5,31 @@
 }
 
 .experience__title {
+  position: relative;
   font-size: clamp(1.2rem, 4vw, 1.5rem);
   font-weight: 800;
   letter-spacing: 0.12em;
   text-align: center;
   color: transparent;
-  background: linear-gradient(90deg, #4dabf7 0%, #7c3aed 70%, #ff8560 100%);
+  background: linear-gradient(90deg, #ff4d8d 0%, #c084fc 48%, #7c3aed 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   margin-bottom: 32px;
+}
+
+.experience__title::before,
+.experience__title::after {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  margin: 0 12px 5px;
+  background: linear-gradient(90deg, transparent, #ff4d8d);
+}
+
+.experience__title::after {
+  background: linear-gradient(90deg, #7c3aed, transparent);
 }
 
 .experience__list {
