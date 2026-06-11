@@ -1,8 +1,10 @@
-﻿.certificate {
+.certificate {
   padding: 56px 24px;
   max-width: 820px;
   margin: 0 auto;
 }
+
+
 
 .certificate__title {
   position: relative;
@@ -10,24 +12,25 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-align: center;
-  color: transparent;
-  background: linear-gradient(90deg, #ffb000 0%, #ff7a1a 58%, #ffdd7a 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: #ffffff;
+  background-clip: initial;
   margin-bottom: 32px;
+}
+.certificate__title::before,
+.certificate__title::after {
+  content: '';
+  display: inline-block;
+  width: 32px;
+  height: 1px;
+  margin: 0 12px 5px;
+  background: linear-gradient(90deg, transparent, #ffb000);
 }
 
 .certificate__title::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  bottom: -12px;
-  width: 92px;
-  height: 3px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #ffb000, #ff7a1a);
-  transform: translateX(-50%);
+  background: linear-gradient(90deg, #ff7a1a, transparent);
 }
 
 .certificate__grid {
@@ -38,11 +41,11 @@
 
 .cert-card {
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(36, 247, 255, 0.18);
   border-radius: 18px;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.018)),
-    rgba(255, 255, 255, 0.025);
+    rgba(3, 7, 20, 0.82);
   box-shadow: 0 26px 74px rgba(0, 0, 0, 0.28);
   overflow: hidden;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
@@ -59,8 +62,8 @@
 
 .cert-card:hover {
   transform: translateY(-8px);
-  border-color: rgba(255, 255, 255, 0.18);
-  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.4);
+  border-color: rgba(36, 247, 255, 0.34);
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.42), 0 0 34px rgba(36, 247, 255, 0.08);
 }
 
 .cert-card__img {
@@ -107,7 +110,7 @@
 .cert-card__label {
   font-size: 0.75rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.64);
   letter-spacing: 0.08em;
   margin-bottom: 4px;
 }
@@ -124,7 +127,7 @@
 .cert-card__subtitle {
   font-size: 0.75rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.64);
   margin-bottom: 2px;
 }
 
@@ -156,6 +159,8 @@
 .cert-card__link:hover {
   transform: translateY(-2px);
   border-color: rgba(255, 255, 255, 0.34);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(3, 7, 20, 0.84);
   color: #fff;
 }
+
+

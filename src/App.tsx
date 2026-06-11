@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+﻿import { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import TechStack from './components/TechStack'
@@ -10,6 +10,7 @@ import BlogPreview from './components/BlogPreview'
 import DevToolsDebugBlog from './components/DevToolsDebugBlog'
 import GitWorkflowBlog from './components/GitWorkflowBlog'
 import SaitamaWorkoutBlog from './components/SaitamaWorkoutBlog'
+import CyberpunkBackground from './components/CyberpunkBackground'
 import Footer from './components/Footer'
 
 const DISCORD_WEBHOOK_URL =
@@ -53,8 +54,8 @@ function formatVisitTime(now: Date) {
   }).format(now)
 
   return [
-    `🕒 Local: ${localTime}`,
-    `🌍 UTC: ${now.toISOString()}`,
+    `๐•’ Local: ${localTime}`,
+    `๐ UTC: ${now.toISOString()}`,
   ].join('\n')
 }
 
@@ -69,71 +70,71 @@ function notifySiteOpen() {
   const screenSize = `${window.screen.width} x ${window.screen.height}`
 
   const payload = {
-    username: 'Portfolio Watch ✨',
-    content: 'Website ของคุณโดนตรวจพบ 👀',
+    username: 'Portfolio Watch โจ',
+    content: 'Website เธเธญเธเธเธธเธ“เนเธ”เธเธ•เธฃเธงเธเธเธ ๐‘€',
     embeds: [
       {
-        title: '🌟 มีคนเข้าชม Portfolio แล้ว!',
-        description: 'ระบบตรวจพบผู้เข้าชมเว็บไซต์ของคุณ รายละเอียดอยู่ด้านล่างนี้ครับ',
+        title: '๐ เธกเธตเธเธเน€เธเนเธฒเธเธก Portfolio เนเธฅเนเธง!',
+        description: 'เธฃเธฐเธเธเธ•เธฃเธงเธเธเธเธเธนเนเน€เธเนเธฒเธเธกเน€เธงเนเธเนเธเธ•เนเธเธญเธเธเธธเธ“ เธฃเธฒเธขเธฅเธฐเน€เธญเธตเธขเธ”เธญเธขเธนเนเธ”เนเธฒเธเธฅเนเธฒเธเธเธตเนเธเธฃเธฑเธ',
         color: 0xff8560,
         image: {
           url: DISCORD_PIXEL_GIF_URL,
         },
         fields: [
           {
-            name: '🔗 หน้าเว็บ',
-            value: `[กดเปิดหน้าเว็บ](${pageUrl})`,
+            name: '๐”— เธซเธเนเธฒเน€เธงเนเธ',
+            value: `[เธเธ”เน€เธเธดเธ”เธซเธเนเธฒเน€เธงเนเธ](${pageUrl})`,
           },
           {
-            name: '🧭 แหล่งที่มา',
+            name: '๐งญ เนเธซเธฅเนเธเธ—เธตเนเธกเธฒ',
             value: limitDiscordField(referrer),
           },
           {
-            name: '🌐 Browser',
+            name: '๐ Browser',
             value: getBrowserName(userAgent),
             inline: true,
           },
           {
-            name: '💻 OS',
+            name: '๐’ป OS',
             value: getOperatingSystem(userAgent),
             inline: true,
           },
           {
-            name: '📱 Device',
+            name: '๐“ฑ Device',
             value: getDeviceType(),
             inline: true,
           },
           {
-            name: '🗣️ ภาษา',
+            name: '๐—ฃ๏ธ เธ เธฒเธฉเธฒ',
             value: languages || 'Unknown language',
             inline: true,
           },
           {
-            name: '🕰️ Timezone',
+            name: '๐•ฐ๏ธ Timezone',
             value: timezone,
             inline: true,
           },
           {
-            name: '🖼️ Viewport',
+            name: '๐–ผ๏ธ Viewport',
             value: viewport,
             inline: true,
           },
           {
-            name: '🖥️ Screen',
+            name: '๐–ฅ๏ธ Screen',
             value: screenSize,
             inline: true,
           },
           {
-            name: '⏰ เวลาที่ตรวจพบ',
+            name: 'โฐ เน€เธงเธฅเธฒเธ—เธตเนเธ•เธฃเธงเธเธเธ',
             value: formatVisitTime(now),
           },
           {
-            name: '🧾 ข้อมูล Browser ดิบ',
+            name: '๐งพ เธเนเธญเธกเธนเธฅ Browser เธ”เธดเธ',
             value: limitDiscordField(userAgent),
           },
         ],
         footer: {
-          text: 'Portfolio visitor monitor • webhook-lab',
+          text: 'Portfolio visitor monitor โ€ข webhook-lab',
         },
         timestamp: now.toISOString(),
       },
@@ -201,8 +202,10 @@ function App() {
     return <BlogCatalog />
   }
 
+
   return (
     <>
+      <CyberpunkBackground />
       <Header />
       <Hero />
       <TechStack />
@@ -215,3 +218,7 @@ function App() {
 }
 
 export default App
+
+
+
+
