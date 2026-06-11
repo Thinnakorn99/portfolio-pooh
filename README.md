@@ -393,21 +393,19 @@ Recommended setup:
 After the workflow succeeds, the image will be available at:
 
 ```text
-https://hub.docker.com/r/DOCKERHUB_USERNAME/portfolio-blog-api
+https://hub.docker.com/r/mheepooh1150/portfolio-blog-api
 ```
-
-Replace `DOCKERHUB_USERNAME` with your real Docker Hub username.
 
 Pull the latest image:
 
 ```powershell
-docker pull DOCKERHUB_USERNAME/portfolio-blog-api:latest
+docker pull mheepooh1150/portfolio-blog-api:latest
 ```
 
 Pull the versioned image:
 
 ```powershell
-docker pull DOCKERHUB_USERNAME/portfolio-blog-api:v1
+docker pull mheepooh1150/portfolio-blog-api:v1
 ```
 
 Run the published image manually:
@@ -417,7 +415,7 @@ docker run --rm -p 3001:3001 `
   -e MONGODB_URI="mongodb://host.docker.internal:27017" `
   -e MONGODB_DB_NAME="portfolio_blog" `
   -e MONGODB_POSTS_COLLECTION="posts" `
-  DOCKERHUB_USERNAME/portfolio-blog-api:latest
+  mheepooh1150/portfolio-blog-api:latest
 ```
 
 The production workflow keeps secrets in GitHub Actions, builds the Docker image in CI, and publishes image tags that can be pulled by deployment servers later.
