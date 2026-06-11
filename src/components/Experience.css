@@ -1,8 +1,10 @@
-﻿.experience {
+.experience {
   padding: 56px 24px;
   max-width: 720px;
   margin: 0 auto;
 }
+
+
 
 .experience__title {
   position: relative;
@@ -10,14 +12,13 @@
   font-weight: 800;
   letter-spacing: 0.12em;
   text-align: center;
-  color: transparent;
-  background: linear-gradient(90deg, #ff4d8d 0%, #c084fc 48%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #ffffff;
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: #ffffff;
+  background-clip: initial;
   margin-bottom: 32px;
 }
-
 .experience__title::before,
 .experience__title::after {
   content: '';
@@ -41,11 +42,11 @@
 .exp-card {
   position: relative;
   padding: 22px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(36, 247, 255, 0.18);
   border-radius: 18px;
   background:
     linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.018)),
-    rgba(255, 255, 255, 0.025);
+    rgba(3, 7, 20, 0.82);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.08),
     0 24px 70px rgba(0, 0, 0, 0.25);
@@ -64,10 +65,10 @@
 
 .exp-card:hover {
   transform: translateY(-6px);
-  border-color: rgba(255, 255, 255, 0.18);
+  border-color: rgba(36, 247, 255, 0.34);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.1),
-    0 30px 80px rgba(0, 0, 0, 0.38);
+    0 30px 80px rgba(0, 0, 0, 0.4), 0 0 34px rgba(36, 247, 255, 0.08);
 }
 
 .exp-card:hover::before {
@@ -109,10 +110,10 @@
 .exp-card__year {
   padding: 6px 10px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(77, 171, 247, 0.08);
   font-size: 0.75rem;
   font-weight: 700;
-  color: rgba(255, 255, 255, 0.58);
+  color: rgba(255, 255, 255, 0.72);
   flex-shrink: 0;
 }
 
@@ -129,7 +130,7 @@
   font-size: 0.82rem;
   font-weight: 300;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.8);
   position: relative;
   padding-left: 14px;
 }
