@@ -40,7 +40,7 @@ services:
     ports:
       - "27018:27017"
     volumes:
-      - mongo-data:/data/db
+      - ./mongodb_data:/data/db
     healthcheck:
       test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
       interval: 10s
@@ -53,9 +53,6 @@ services:
 networks:
   api_network:
     driver: bridge
-
-volumes:
-  mongo-data:
 
 
 
