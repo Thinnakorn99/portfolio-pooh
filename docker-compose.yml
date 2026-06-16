@@ -9,7 +9,7 @@ services:
       - "3001"
     environment:
       PORT: 3001
-      MONGODB_URI: mongodb://mongo:27017
+      MONGODB_URI: mongodb://db_admin:db_secure_password123@mongo:27017/portfolio_blog?authSource=admin
       MONGODB_DB_NAME: portfolio_blog
       MONGODB_POSTS_COLLECTION: posts
     depends_on:
@@ -41,6 +41,9 @@ services:
       - "27018:27017"
     volumes:
       - ./mongodb_data:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: db_admin
+      MONGO_INITDB_ROOT_PASSWORD: db_secure_password123
     healthcheck:
       test: ["CMD", "mongosh", "--quiet", "--eval", "db.adminCommand('ping').ok"]
       interval: 10s
