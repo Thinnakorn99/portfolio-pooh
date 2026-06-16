@@ -1,21 +1,16 @@
-name: Publish Docker Image
+name: Publish and Deploy Docker Image
 
 on:
   push:
     branches:
       - main
-      - master
-      - poohseo92
-    tags:
-      - 'v*'
-  workflow_dispatch:
 
 env:
   IMAGE_NAME: portfolio-blog-api
 
 jobs:
-  build-and-push:
-    name: Build and push API image
+  build-push-deploy:
+    name: Build, Push and Deploy
     runs-on: ubuntu-latest
 
     steps:
@@ -36,9 +31,67 @@ jobs:
         with:
           context: .
           file: ./Dockerfile
+          platforms: linux/amd64
           push: true
           tags: |
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:latest
-            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:v1
+            ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:v${{ github.run_number }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
+
+      - name: Deploy to Server via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd ~/portfolio-pooh
+            # Pull the new version tag
+            docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:v${{ github.run_number }}
+            # Update docker-compose.yml to use the new image tag instead of build
+            if grep -q "build:" docker-compose.yml; then
+              sed -i '/build:/,/dockerfile: Dockerfile/c\    image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:v${{ github.run_number }}' docker-compose.yml
+            else
+              sed -i "s|image: .*${{ env.IMAGE_NAME }}:.*|image: ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:v${{ github.run_number }}|g" docker-compose.yml
+            fi
+            # Restart containers
+            docker compose down
+            docker compose up -d
+
+      - name: Send Discord Notification
+        if: success()
+        run: |
+          curl -H "Content-Type: application/json" \
+               -d '{
+                 "username": "GitHub Actions",
+                 "avatar_url": "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+                 "embeds": [{
+                   "title": "🚀 Deployment Successful!",
+                   "description": "The new version has been successfully built, pushed, and deployed to the server.",
+                   "color": 2282222,
+                   "fields": [
+                     {
+                       "name": "Repository",
+                       "value": "[${{ github.repository }}](https://github.com/${{ github.repository }})",
+                       "inline": true
+                     },
+                     {
+                       "name": "Branch",
+                       "value": "main",
+                       "inline": true
+                     },
+                     {
+                       "name": "Version Tag",
+                       "value": "`v${{ github.run_number }}`",
+                       "inline": true
+                     },
+                     {
+                       "name": "API URL",
+                       "value": "[https://api.portfolio-mheepooh.online/](https://api.portfolio-mheepooh.online/)",
+                       "inline": false
+                     }
+                   ],
+                   "timestamp": "'$(date -u +%Y-%m-%dT%H:%M:%SZ)'"
+                 }]
+               }' \
+               "https://discord.com/api/webhooks/1511558594817036308/3Pljvxt56tbymTaknVN2g0eeslq25OaP3lnWiSwmHbyTEkMy7phwo6Acu9ItSw7SFZ1Y"
