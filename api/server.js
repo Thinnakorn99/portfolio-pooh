@@ -1,4 +1,5 @@
-﻿import http from 'node:http'
+import http from 'node:http'
+import { randomUUID } from 'node:crypto'
 import 'dotenv/config'
 import { MongoClient, ObjectId } from 'mongodb'
 
@@ -21,7 +22,8 @@ function sendJson(res, statusCode, data) {
   res.writeHead(statusCode, {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET,POST,DELETE,OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Request-ID',
+    'Access-Control-Expose-Headers': 'X-Request-ID',
     'Content-Type': 'application/json; charset=utf-8',
   })
   res.end(JSON.stringify(data, null, 2))
@@ -46,7 +48,7 @@ function readJsonBody(req) {
     req.on('data', (chunk) => {
       body += chunk
 
-      if (body.length > 1_000_000) {
+      if (body.length > 100_000) { // Limit body size to 100KB
         reject(new Error('Request body is too large.'))
         req.destroy()
       }
@@ -104,7 +106,9 @@ function parseObjectId(id) {
 
 const server = http.createServer(async (req, res) => {
   const pathname = getPathname(req)
-  console.log(`📌 [${new Date().toISOString()}] ${req.method} ${pathname}`)
+  const reqId = req.headers['x-request-id'] || randomUUID()
+  res.setHeader('X-Request-ID', reqId)
+  console.log(`📌 [${new Date().toISOString()}] [ReqID: ${reqId}] ${req.method} ${pathname}`)
 
   try {
     if (req.method === 'OPTIONS') {

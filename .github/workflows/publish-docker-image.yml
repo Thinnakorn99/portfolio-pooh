@@ -46,6 +46,8 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             cd ~/portfolio-pooh
+            git fetch --all
+            git reset --hard origin/main
             # Pull the new version tag
             docker pull ${{ secrets.DOCKERHUB_USERNAME }}/${{ env.IMAGE_NAME }}:v${{ github.run_number }}
             # Update docker-compose.yml to use the new image tag instead of build
