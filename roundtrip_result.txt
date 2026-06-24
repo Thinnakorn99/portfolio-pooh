@@ -1,5 +1,0 @@
-﻿Decode error at 1280: invalid start byte
-Bytes around error: E0 B9 84 C1 E0 B9 88 CA D2 C1 D2 C3 E0
-Around showToast: "showToast('เน๏ฟฝเน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝเธ–เธ”๏ฟฝเธเธเน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝเธ๏ฟฝ๏ฟฝเนเธ”เนเธ”เนเธ๏ฟฝเธเธ๏ฟฝเธเธเน๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝเธ๏ฟฝ๏ฟฝเธ', 'info')\n      } finally "
-Thai chars in fixed: 1270
-Fixed size: 79200 bytes
