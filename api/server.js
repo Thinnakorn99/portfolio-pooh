@@ -17,7 +17,6 @@ if (!MONGODB_URI) {
 
 const client = new MongoClient(MONGODB_URI)
 let postsCollection
-let cardsCollection
 
 function sendJson(res, statusCode, data) {
   res.writeHead(statusCode, {
@@ -42,35 +41,6 @@ function serializePost(post) {
   }
 }
 
-function serializeCard(card) {
-  if (!card) return null
-
-  return {
-    id: card._id.toString(),
-    name: card.name,
-    category: card.category,
-    refId: card.refId,
-    grading: card.grading,
-    cost: Number(card.cost || 0),
-    status: card.status,
-    image: card.image,
-    additionalImages: Array.isArray(card.additionalImages) ? card.additionalImages : [],
-    salePrice: card.salePrice !== undefined ? Number(card.salePrice) : undefined,
-    shippingType: card.shippingType,
-    shippingCharged: card.shippingCharged !== undefined ? Number(card.shippingCharged) : undefined,
-    trackingNumber: card.trackingNumber,
-    notes: card.notes,
-    dateAdded: card.dateAdded,
-    dateSold: card.dateSold,
-    details: card.details,
-  }
-}
-
-function getCardIdFromPath(pathname) {
-  const match = pathname.match(/^\/cards\/([^/]+)$/)
-  return match?.[1]
-}
-
 function readJsonBody(req) {
   return new Promise((resolve, reject) => {
     let body = ''
@@ -78,7 +48,7 @@ function readJsonBody(req) {
     req.on('data', (chunk) => {
       body += chunk
 
-      if (body.length > 5_000_000) { // Limit body size to 5MB (for multiple images)
+      if (body.length > 100_000) { // Limit body size to 100KB
         reject(new Error('Request body is too large.'))
         req.destroy()
       }
@@ -222,132 +192,6 @@ const server = http.createServer(async (req, res) => {
       return
     }
 
-    if (req.method === 'GET' && pathname === '/cards') {
-      const cards = await cardsCollection
-        .find({})
-        .sort({ dateAdded: -1, _id: -1 })
-        .toArray()
-
-      sendJson(res, 200, {
-        data: cards.map(serializeCard),
-        count: cards.length,
-      })
-      return
-    }
-
-    if (req.method === 'POST' && pathname === '/cards') {
-      const body = await readJsonBody(req)
-      if (!body.name || !body.refId) {
-        sendJson(res, 400, { error: 'name and refId are required.' })
-        return
-      }
-
-      const card = {
-        name: body.name,
-        category: body.category || 'One Piece',
-        refId: body.refId,
-        grading: body.grading || 'Raw',
-        cost: Number(body.cost || 0),
-        status: body.status || 'available',
-        image: body.image,
-        additionalImages: Array.isArray(body.additionalImages) ? body.additionalImages : [],
-        dateAdded: body.dateAdded || new Date().toISOString().split('T')[0],
-        details: body.details || '',
-      }
-
-      const result = await cardsCollection.insertOne(card)
-      sendJson(res, 201, {
-        data: serializeCard({ _id: result.insertedId, ...card }),
-      })
-      return
-    }
-
-    const cardId = getCardIdFromPath(pathname)
-
-    if (cardId && req.method === 'POST') {
-      const objectId = parseObjectId(cardId)
-      if (!objectId) {
-        sendJson(res, 400, { error: 'Invalid card id.' })
-        return
-      }
-
-      const body = await readJsonBody(req)
-      
-      const updateData = {
-        name: body.name,
-        category: body.category,
-        refId: body.refId,
-        grading: body.grading,
-        cost: Number(body.cost || 0),
-        status: body.status,
-        image: body.image,
-        additionalImages: Array.isArray(body.additionalImages) ? body.additionalImages : [],
-        details: body.details,
-      }
-
-      if (body.status === 'sold') {
-        updateData.salePrice = Number(body.salePrice || 0)
-        updateData.shippingType = body.shippingType
-        updateData.shippingCharged = body.shippingType === 'shipping' ? Number(body.shippingCharged || 0) : 0
-        updateData.trackingNumber = body.shippingType === 'shipping' ? body.trackingNumber : ''
-        updateData.notes = body.notes
-        updateData.dateSold = body.dateSold || new Date().toISOString().split('T')[0]
-      } else {
-        updateData.salePrice = undefined
-        updateData.shippingType = undefined
-        updateData.shippingCharged = undefined
-        updateData.trackingNumber = undefined
-        updateData.notes = undefined
-        updateData.dateSold = undefined
-      }
-
-      const updateDoc = {}
-      const unsetDoc = {}
-      for (const key in updateData) {
-        if (updateData[key] === undefined) {
-          unsetDoc[key] = ""
-        } else {
-          updateDoc[key] = updateData[key]
-        }
-      }
-
-      const updateObj = { $set: updateDoc }
-      if (Object.keys(unsetDoc).length > 0) {
-        updateObj.$unset = unsetDoc
-      }
-
-      const updatedCard = await cardsCollection.findOneAndUpdate(
-        { _id: objectId },
-        updateObj,
-        { returnDocument: 'after' }
-      )
-
-      if (!updatedCard) {
-        sendJson(res, 404, { error: 'Card not found.' })
-        return
-      }
-
-      sendJson(res, 200, { data: serializeCard(updatedCard) })
-      return
-    }
-
-    if (cardId && req.method === 'DELETE') {
-      const objectId = parseObjectId(cardId)
-      if (!objectId) {
-        sendJson(res, 400, { error: 'Invalid card id.' })
-        return
-      }
-
-      const result = await cardsCollection.deleteOne({ _id: objectId })
-      if (result.deletedCount === 0) {
-        sendJson(res, 404, { error: 'Card not found.' })
-        return
-      }
-
-      sendJson(res, 200, { data: { id: cardId, deleted: true } })
-      return
-    }
-
     const postViewId = getPostViewIdFromPath(pathname)
 
     if (postViewId && req.method === 'POST') {
@@ -427,10 +271,6 @@ const server = http.createServer(async (req, res) => {
         'POST /posts/:id/view',
         'DELETE /posts/:id',
         'GET /analytics/top-posts',
-        'GET /cards',
-        'POST /cards',
-        'POST /cards/:id',
-        'DELETE /cards/:id',
       ],
     })
   } catch (error) {
@@ -446,10 +286,8 @@ async function start() {
   await client.connect()
   const db = client.db(DB_NAME)
   postsCollection = db.collection(POSTS_COLLECTION)
-  cardsCollection = db.collection('cards')
   await postsCollection.createIndex({ createdAt: -1 })
   await postsCollection.createIndex({ views: -1, createdAt: -1 })
-  await cardsCollection.createIndex({ dateAdded: -1 })
 
   server.listen(PORT, () => {
     console.log(`🚀 Blog API is running at http://localhost:${PORT}`)
