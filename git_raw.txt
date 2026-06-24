@@ -1,0 +1,4 @@
+﻿Total bytes: 74882
+Has BOM: False
+High bytes count: 0
+First 10 high bytes: []

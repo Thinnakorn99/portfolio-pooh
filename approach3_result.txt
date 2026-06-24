@@ -1,0 +1,11 @@
+﻿Pokemon: "Pokรฉmon' | '"
+First Thai at 1286: '๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝเธ–เธ”๏ฟฝ๏ฟฝ\x87๏ฟฝ\x82๏ฟฝ\x89๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ๏ฟฝ\x81๏ฟฝ๏ฟฝ๏ฟฝ\x8cเธ”๏ฟฝ\x84เธ”๏ฟฝ\x89๏ฟฝ\x88๏ฟฝ๏ฟฝ\x81๏ฟฝ\x90๏ฟฝ๏ฟฝ\x99๏ฟฝ\x82๏ฟฝ\x89๏ฟฝ'
+Raw bytes size: 86003
+First bytes: 69 6D 70 6F 72 74
+cp874 table has 225 entries
+Original bytes length: 77580
+First bytes: 69 6D 70 6F 72 74
+UTF-8 decode failed at position 1277: 'utf-8' codec can't decode bytes in position 1277-1278: invalid continuation byte
+Used replacement chars for invalid sequences
+Fixed content size: 81105 bytes
+Thai chars in fixed: 341
