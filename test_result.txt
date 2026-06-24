@@ -1,0 +1,10 @@
+﻿Garbled: 'เน€เธเน€เธเธเน€เธเน€เธเธชเธฒเธกเธฒเธฃเธ–'
+Fixed:   'เน€เธเน€เธเธเน€เธเน€เธเธชเธฒเธกเธฒเธฃเธ–'
+
+Garbled: 'เน€เธเธฃเน€เธเธฃเน€เธเธญเธฒ'
+Fixed:   'เน€เธเธฃเน€เธเธฃเน€เธเธญเธฒ'
+
+Original size: 88120 bytes
+Fixed size: 88120 bytes
+Around Pokemon: "'Pokเธฃเธmon' | 'O"
+First Thai at 141: "gory: 'Pokเธฃเธmon' | 'One Piece' | 'Yu-Gi-Oh!' | 'Magic: The G"
