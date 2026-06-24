@@ -1,4 +1,4 @@
-﻿import './Header.css'
+import './Header.css'
 
 export default function Header() {
   return (
@@ -9,6 +9,7 @@ export default function Header() {
         <a href="#experience">Experience</a>
         <a href="#certificate">Certificate</a>
         <a href="/blog">Blog</a>
+        <a href="/private">Private</a>
       </nav>
     </header>
   )
