@@ -12,6 +12,9 @@ import GitWorkflowBlog from './components/GitWorkflowBlog'
 import SaitamaWorkoutBlog from './components/SaitamaWorkoutBlog'
 import CyberpunkBackground from './components/CyberpunkBackground'
 import Footer from './components/Footer'
+import Private from './components/Private'
+import PrivateGate from './components/PrivateGate'
+
 
 const DISCORD_WEBHOOK_URL = import.meta.env.VITE_DISCORD_WEBHOOK_URL || ''
 const WEBHOOK_SESSION_KEY = 'portfolio-open-webhook-sent'
@@ -150,6 +153,19 @@ function notifySiteOpen() {
     keepalive: true,
   }).catch(() => undefined)
 }
+
+function PrivateGatedRoute() {
+  const [isAuthorized, setIsAuthorized] = useState(() => {
+    return sessionStorage.getItem('private_authorized') === 'true'
+  })
+
+  if (!isAuthorized) {
+    return <PrivateGate onAccessGranted={() => setIsAuthorized(true)} />
+  }
+
+  return <Private />
+}
+
 function App() {
   const [path, setPath] = useState(window.location.pathname)
 
@@ -194,6 +210,10 @@ function App() {
 
   if (normalizedPath === '/blog') {
     return <BlogCatalog />
+  }
+
+  if (normalizedPath === '/private') {
+    return <PrivateGatedRoute />
   }
 
 
